@@ -44,7 +44,7 @@ fi
 
 \textbf{read}: beletesz egy \textit{printout}-ot egy változóba. Szintaxisa: \texttt{dirname \$0 $|$ read valtozonev}. Ez ekvivalens azzal, hogy: \texttt{valtozo=\$(dirname \$)}\newline
 
-\textbf{std error átirányitása az std outra}: \textit{2$>\&$1}
+
 
 
 \newpage
@@ -64,7 +64,9 @@ fi
 	\item \&\&: logikai \texttt{és} művelet
 	\item $||$: logikai \texttt{vagy} művelet
 	\item \texttt{file descriptor 1}: standard out
-	\item \texttt{file descriptor 2}: standard error 
+	\item \texttt{file descriptor 2}: standard error
+	\item a \textbf{return} utasitás csak numerikus értéket tud visszaadni 0-256-ig
+	\item \textbf{std error átirányitása az std outra}: \textit{$2>\&1$}
 	
 \end{itemize}
 
