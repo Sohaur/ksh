@@ -33,18 +33,26 @@ Csak saját felelősségre! KSH szakértők \textbf{NE} olvassák!
 \textbf{source vagy .} \textit{fájlnév}: "Bemásolja" futásidőben a mögötte lévő fájl tartalmát az aktuális scipt "elejére". Gyakorlatilag, mint a \textit{java import} vagy \textit{c++ include}.\newline 
 
 \textbf{Ez az sor}: 
-"\texttt{[[ \textit{feltetel} ]]\&\& \textbf{igaz} erteku utasitas $||$ masik utasitas}" ezt jelenti: 
+"\texttt{[[ \textit{feltetel} ]]\&\& utasitas1 $||$ utasitas2}" ezt jelenti: 
 \begin{lstlisting}[language=bash]
-if == ;then
-igaz erteku utasitas 
+if [feltetel]; then
+utasitas1 
 else
-masik utasitas
+utasitas2
 fi
 \end{lstlisting}
+\textit{fontos!} Az utasitas1 mindenképp igazzal kell visszatérjen, mert ellenkező esetben a \texttt{logikai vagy} miatt az utasitas2 is végrehajtódna ( mivel a \texttt{logikai és} mindkét operadusának igaznak kell lennie, vagy az eredmény hamis).\newline
 
 \textbf{read}: beletesz egy \textit{printout}-ot egy változóba. Szintaxisa: \texttt{dirname \$0 $|$ read valtozonev}. Ez ekvivalens azzal, hogy: \texttt{valtozo=\$(dirname \$)}\newline
 
+\texttt{stream redirect}: \textit{echo} "valami" [$>\&1$ / $>\&2$]: "valami kiirása a standard outputra / error streamre" 
 
+\textbf{Stringekről:} Stringeket úgy lehet definiálni, hogy:
+\begin{itemize}
+	\item "\$xxx" (Ebben az esetben minden, ami kiértékelhető, ki lesz értékelve)
+	\item '\$xxx' (Ebben az esetben minden \textbf{SZÓ SZERINT} kerül a stringbe, semmi kiértékelés)
+	\item $`alma`$ Ez azzal ekvivalens, hogy \textbf{\$()}
+\end{itemize}
 
 
 \newpage
