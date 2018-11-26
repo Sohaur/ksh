@@ -1,0 +1,70 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[hungarian]{babel}
+\usepackage{xcolor}
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily,
+	showstringspaces=false,
+	commentstyle=\color{red},
+	keywordstyle=\color{blue}
+}
+
+\begin{document}
+
+\title{Introduction to KornShell by KIZO}
+\author{Soha Péter}
+\date{\today}
+
+\maketitle
+
+\begin{abstract}
+KiZo KS gyorstalpalójának felületes és végtelenül hanyag módon szerkesztett kivonata!
+\end{abstract}
+
+\section{Részletes dolgok}
+\textbf{\$0}: az éppen végrehajtott script relativ útvonalát tartalmazza az aktuális könyvtárhoz képest.\newline
+
+\textbf{\$${.sh.file}$}: KornShell specifikus cucc,  majdnem ugyanazt tudja, mint a \textbf{\$0}, csak ez abszolút path-t ad vissza\newline
+
+\textit{variable}=\textbf{\$(script)}: végrehajtja az argumentumában lévő parancsokat és a értékét belerakja a \textit{variable} változóba.\newline
+
+\textbf{pwd}: \textbf{P}rint \textbf{W}orking \textbf{D}irectory. Az aktuális könyvtár \textit{abszolút} elérési útját adja vissza (alapértelmezetten printeli).\newline
+
+\textbf{source / .} : Olyan, mintha bekopizná a mögötte lévő fájl tartalmát az aktuális scipt "elejére". Gyakorlatilag, mint a \textit{java import} vagy \textit{c++ include}.\newline 
+
+\textbf{Ez az sor}: 
+"\texttt{[[ == ]]\&\& utasitas $||$ masik utasitas}" ezt jelenti: 
+\begin{lstlisting}[language=bash]
+if == ;then
+utasitas
+else
+masik utasitas
+fi
+\end{lstlisting}
+
+\textbf{read}: beletesz egy \textit{printout}-ot egy változóba. Szintaxisa: \texttt{dirname \$0 $|$ read valtozonev}. Ez ekvivalens azzal, hogy: \texttt{valtozo=\$(dirname \$)}\newline
+
+
+\newpage
+\section{Okosságok}
+\begin{itemize}
+	\item korn shebang: \textbf{\#!/bin/ksh} (utána kötelező üres sor!)
+	\item A változók nem tartalmaznak perjelet!
+	\item printout berakása változóba: \texttt{w=\$(cd \$(dirname \$0));pwd}
+	\item függvény szintaxis 1: \textbf{function} \texttt{name} \{\}
+	\item függvény szintaxis 2: \texttt{name}()\{\}
+	\item if szintaxis 1: \textbf{if}[\textit{feltétel}] \textbf{fi}
+	\item if szintaxis 2: [["\$valami"]]
+	\item -z/-n a feltételben: nulla/nemnulla a hossz
+	\item a [[ \$VALTOZO]]: \$Valtozo hossza nem nulla (ugyanaz, mint: [[-n \$Valtozo]])
+	\item \$IFS/\$OFS: input és output field separator. Default whitespace, átállitható, de nem ajánlott
+	\item a \textbf{read}-del több változóba is be lehet töltetni cuccot!
+	\item \$\$: logikai \texttt{és} művelet
+	\item $||$: logikai \texttt{vagy} művelet
+	
+\end{itemize}
+
+
+
+
+\end{document}
