@@ -44,6 +44,8 @@ fi
 
 \textbf{read}: beletesz egy \textit{printout}-ot egy változóba. Szintaxisa: \texttt{dirname \$0 $|$ read valtozonev}. Ez ekvivalens azzal, hogy: \texttt{valtozo=\$(dirname \$)}\newline
 
+\textbf{std error átirányitása az std outra}: \textit{2$>\&$1}
+
 
 \newpage
 \section{Okosságok}
@@ -53,14 +55,16 @@ fi
 	\item printout berakása változóba: \texttt{w=\$(cd \$(dirname \$0));pwd}
 	\item függvény szintaxis 1: \textbf{function} \texttt{name} \{\}
 	\item függvény szintaxis 2: \texttt{name}()\{\} (nem használjuk!!!)
-	\item if szintaxis 1: \textbf{if}[ \textit{feltétel} ]; \textbf{fi}
-	\item if szintaxis 2: [[ "\$valami" ]]
+	\item if szintaxis 1: \textbf{if}[ \textit{feltétel} ]; then \textit{command} \textbf{fi}
+	\item if szintaxis 2: [[ "\$valami" ]] (impliciten -n flaget ért alatta a ksh)
 	\item -z/-n a feltételben: nulla/nemnulla a hossz
 	\item a [[ \$VALTOZO ]]: \$Valtozo hossza nem nulla (ugyanaz, mint: [[-n \$Valtozo]])
 	\item \$IFS/\$OFS: input és output field separator. Default whitespace, átállitható, de nem ajánlott
 	\item a \textbf{read}-del több változóba is be lehet töltetni cuccot!
-	\item \$\$: logikai \texttt{és} művelet
+	\item \&\&: logikai \texttt{és} művelet
 	\item $||$: logikai \texttt{vagy} művelet
+	\item \texttt{file descriptor 1}: standard out
+	\item \texttt{file descriptor 2}: standard error 
 	
 \end{itemize}
 
